@@ -1,0 +1,8 @@
+{
+  "symmetric_algorithm": "AES-256-GCM",
+  "asymmetric_algorithm": "RSA-3072-OAEP-SHA256",
+  "rsa_key_size": 3072,
+  "gcm_nonce_bytes": 12,
+  "gcm_tag_bytes": 16,
+  "key_lifetime_days": 30
+}

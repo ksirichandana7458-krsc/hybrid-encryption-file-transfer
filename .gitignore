@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Generated private/public key material and transfer outputs must not be committed.
+keys/*.pem
+keys/key_metadata.json
+storage/output_files/*
+!storage/output_files/.gitkeep
+
+# Local PowerShell cache unrelated to the project.
+Microsoft/
