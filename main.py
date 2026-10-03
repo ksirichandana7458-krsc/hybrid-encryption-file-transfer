@@ -1,4 +1,4 @@
-"""Command-line entry point for the hybrid encryption file-transfer demo."""
+"""Command-line entry point for the hybrid encryption file-transfer protocol."""
 
 from __future__ import annotations
 
@@ -39,11 +39,11 @@ def cmd_decrypt(args: argparse.Namespace) -> None:
     print(f"Authenticated and decrypted file written to {args.output}")
 
 
-def cmd_demo(_: argparse.Namespace) -> None:
+def cmd_run(_: argparse.Namespace) -> None:
     private_key, public_key = KeyManager.generate_rsa_keypair()
-    payload = b"CONFIDENTIAL: INS Lab End-Semester Exam Paper & Solution Key."
-    bundle = encrypt_file(payload, public_key, "exam_paper.txt", "INS-demo")
-    print("=== INS HYBRID CRYPTOSYSTEM DEMO ===")
+    payload = b"Quarterly inventory report: warehouse A has 148 units in stock."
+    bundle = encrypt_file(payload, public_key, "inventory_report.txt", "operations-team")
+    print("=== INS HYBRID CRYPTOSYSTEM ===")
     print(f"Original data: {payload.decode()}")
     print(f"AES-GCM ciphertext: {bundle.ciphertext.hex()[:30]}...")
     print(f"RSA-encrypted session key: {bundle.encrypted_key.hex()[:30]}...")
@@ -72,8 +72,8 @@ def build_parser() -> argparse.ArgumentParser:
     decrypt.add_argument("bundle", type=Path)
     decrypt.add_argument("output", type=Path)
     decrypt.set_defaults(handler=cmd_decrypt)
-    demo = commands.add_parser("demo")
-    demo.set_defaults(handler=cmd_demo)
+    run = commands.add_parser("run")
+    run.set_defaults(handler=cmd_run)
     return parser
 
 

@@ -18,12 +18,20 @@ Install Python 3.10+ and dependencies, then use:
 
 ```powershell
 python -m pip install -r requirements.txt
-python main.py demo
+python main.py run
 python main.py generate-keys
 python main.py encrypt storage/input_files/example.txt encrypted_bundle.json --sender alice
 python main.py decrypt encrypted_bundle.json storage/output_files/example.txt
 python -m pytest
 ```
+
+For the live dashboard, start the local server and open `http://127.0.0.1:5000`:
+
+```powershell
+python -m flask --app web_app run
+```
+
+Opening [dashboard.html](dashboard.html) directly still works as a static preview, but it cannot load live key metadata or record audit events.
 
 Private keys are stored as passphrase-encrypted PKCS#8 PEM files. A unique salt and PBKDF2-HMAC-SHA256 (600,000 iterations) derive the PEM encryption password; the salt and KDF parameters are held in non-secret metadata. Metadata also tracks creation, expiration, and revocation; an expired key can be rotated through `KeyManager.rotate_if_expired`.
 

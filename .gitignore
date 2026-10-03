@@ -7,6 +7,8 @@ keys/*.pem
 keys/key_metadata.json
 storage/output_files/*
 !storage/output_files/.gitkeep
+storage/audit_log.json
+storage/transfer_history.json
 
 # Local PowerShell cache unrelated to the project.
 Microsoft/
